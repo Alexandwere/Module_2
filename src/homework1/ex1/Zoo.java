@@ -1,6 +1,6 @@
-package homewokr1.ex1;
+package homework1.ex1;
 
-import homewokr1.ex1.animal.Animal;
+import homework1.ex1.animal.Animal;
 
 public class Zoo<T extends Animal, D extends Animal, B extends Animal> {
     private T animal1;

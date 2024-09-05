@@ -1,9 +1,8 @@
-package homewokr1.ex1;
+package homework1.ex1;
 
-import homewokr1.ex1.animal.Animal;
-import homewokr1.ex1.animal.Bird;
-import homewokr1.ex1.animal.Dog;
-import homewokr1.ex1.animal.Tiger;
+import homework1.ex1.animal.Bird;
+import homework1.ex1.animal.Dog;
+import homework1.ex1.animal.Tiger;
 
 public class Runner {
     public static void main(String[] args) {
