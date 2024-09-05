@@ -22,7 +22,7 @@ public class Runner {
 
         double averageTemp = sumTemp / twoMonths.size();
 
-        System.out.println("Средняя температура за 2 месяца = " + averageTemp);
+        System.out.println("Средняя температура за 2 месяца = " + Math.round(averageTemp * 100.0) / 100.0);
 
     }
 }
