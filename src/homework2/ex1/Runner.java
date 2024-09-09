@@ -1,0 +1,40 @@
+package homework2.ex1;
+
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+import java.util.concurrent.ArrayBlockingQueue;
+
+public class Runner {
+    public static void main(String[] args) {
+        String filename = "luggage.csv";
+        Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(filename));
+        int capacity = 10;
+
+        while (scanner.hasNextLine()) {
+            try {
+                ArrayBlockingQueue <String> queue = new ArrayBlockingQueue<>(capacity);
+                scanner.nextLine();
+                System.out.println("Начинается загрузка на ленту");
+
+                for (int i = 0; i < capacity; i++) {
+                    queue.add(scanner.nextLine());
+                }
+
+                System.out.println("Лента загружена, начинается выдача багажа");
+
+                for (int i = 0; i < capacity; i++) {
+                    String oneLuggage = queue.poll();
+                    System.out.println(Runner.split(oneLuggage != null ? oneLuggage : scanner.next()) + " - выдан");
+                }
+            } catch (NoSuchElementException e) {
+                System.out.println("Лента пустая, закончена выдача багажа!");
+            }
+        }
+        scanner.close();
+    }
+
+    public static String split(String luggage) {
+        String[] split = luggage.split(";");
+        return split[0];
+    }
+}
