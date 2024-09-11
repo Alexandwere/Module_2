@@ -5,11 +5,21 @@
     <scanScope>JavaOnly</scanScope>
     <copyLibs>true</copyLibs>
     <option name="thirdPartyClasspath" />
-    <option name="activeLocationIds" />
+    <option name="activeLocationIds">
+      <option value="63f20aef-89b1-4f8c-9913-9f65b2513a47" />
+    </option>
     <option name="locations">
       <list>
         <ConfigurationLocation id="bundled-sun-checks" type="BUNDLED" scope="All" description="Sun Checks">(bundled)</ConfigurationLocation>
         <ConfigurationLocation id="bundled-google-checks" type="BUNDLED" scope="All" description="Google Checks">(bundled)</ConfigurationLocation>
+        <ConfigurationLocation id="63f20aef-89b1-4f8c-9913-9f65b2513a47" type="LOCAL_FILE" scope="All" description="Abblazzing_checkstyle">
+          $PROJECT_DIR$/../Java_core2024/google_checks.xml
+          <option name="properties">
+            <map>
+              <entry key="org.checkstyle.google.suppressionxpathfilter.config" value="" />
+            </map>
+          </option>
+        </ConfigurationLocation>
       </list>
     </option>
   </component>

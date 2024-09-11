@@ -21,9 +21,9 @@ public class Runner {
         List<Luggage> middle = groupLuggage.getCategories()[1];
         List<Luggage> heavy = groupLuggage.getCategories()[2];
 
-        Runner.result("легкие", light);
-        Runner.result("средние", middle);
-        Runner.result("тяжелые", heavy);
+        System.out.println(Runner.result("легкие", light));
+        System.out.println(Runner.result("средние", middle));
+        System.out.println(Runner.result("тяжелые", heavy));
 
         scanner.close();
     }
