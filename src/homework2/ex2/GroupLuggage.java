@@ -29,4 +29,5 @@ public class GroupLuggage {
     public int getCountCategory() {
         return countCategory;
     }
+
 }

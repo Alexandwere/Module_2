@@ -17,9 +17,13 @@ public class Runner {
             groupLuggage.addLuggage(luggage);
         }
 
-        Runner.result("легкие", groupLuggage.getCategories()[0]);
-        Runner.result("средние", groupLuggage.getCategories()[1]);
-        Runner.result("тяжелые", groupLuggage.getCategories()[2]);
+        List<Luggage> light = groupLuggage.getCategories()[0];
+        List<Luggage> middle = groupLuggage.getCategories()[1];
+        List<Luggage> heavy = groupLuggage.getCategories()[2];
+
+        Runner.result("легкие", light);
+        Runner.result("средние", middle);
+        Runner.result("тяжелые", heavy);
 
         scanner.close();
     }
