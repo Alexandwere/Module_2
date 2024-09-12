@@ -12,24 +12,21 @@ public class Runner {
         scanner.nextLine();
 
         while (scanner.hasNextLine()) {
-            try {
-                ArrayBlockingQueue <String> queue = new ArrayBlockingQueue<>(capacity);
-                System.out.println("Начинается загрузка на ленту");
+            ArrayBlockingQueue <String> queue = new ArrayBlockingQueue<>(capacity);
+            System.out.println("Начинается загрузка на ленту");
 
-                for (int i = 0; i < capacity; i++) {
-                    queue.add(scanner.nextLine());
-                }
-
-                System.out.println("Лента загружена, начинается выдача багажа");
-
-                for (int i = 0; i < capacity; i++) {
-                    String oneLuggage = queue.poll();
-                    System.out.println(Runner.numberLuggage(oneLuggage != null ? oneLuggage : scanner.next()) +
-                            " - выдан");
-                }
-            } catch (NoSuchElementException e) {
-                System.out.println("Лента пустая, закончена выдача багажа!");
+            for (int i = 0; i < capacity; i++) {
+                queue.add(scanner.nextLine());
             }
+
+            System.out.println("Лента загружена, начинается выдача багажа");
+
+            for (int i = 0; i < capacity; i++) {
+                String oneLuggage = queue.poll();
+                System.out.println(Runner.numberLuggage(oneLuggage != null ? oneLuggage : scanner.next()) +
+                        " - выдан");
+            }
+            System.out.println("Лента пустая, закончена выдача багажа!");
         }
         scanner.close();
     }
