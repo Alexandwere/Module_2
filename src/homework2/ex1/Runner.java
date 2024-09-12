@@ -9,11 +9,11 @@ public class Runner {
         String filename = "luggage.csv";
         Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(filename));
         int capacity = 10;
+        scanner.nextLine();
 
         while (scanner.hasNextLine()) {
             try {
                 ArrayBlockingQueue <String> queue = new ArrayBlockingQueue<>(capacity);
-                scanner.nextLine();
                 System.out.println("Начинается загрузка на ленту");
 
                 for (int i = 0; i < capacity; i++) {
@@ -24,7 +24,8 @@ public class Runner {
 
                 for (int i = 0; i < capacity; i++) {
                     String oneLuggage = queue.poll();
-                    System.out.println(Runner.split(oneLuggage != null ? oneLuggage : scanner.next()) + " - выдан");
+                    System.out.println(Runner.numberLuggage(oneLuggage != null ? oneLuggage : scanner.next()) +
+                            " - выдан");
                 }
             } catch (NoSuchElementException e) {
                 System.out.println("Лента пустая, закончена выдача багажа!");
@@ -33,7 +34,7 @@ public class Runner {
         scanner.close();
     }
 
-    public static String split(String luggage) {
+    public static String numberLuggage(String luggage) {
         String[] split = luggage.split(";");
         return split[0];
     }
