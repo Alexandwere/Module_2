@@ -7,6 +7,9 @@ public class Runner {
     public static void main(String[] args) {
 
         String filename = "luggage.csv";
+        final String lightType = "Лёгкие";
+        final String middleType = "Средние";
+        final String heavyType = "Тяжелые";
         Scanner scanner = new Scanner(homework2.ex1.Runner.class.getClassLoader().getResourceAsStream(filename));
         scanner.nextLine();
         GroupLuggage groupLuggage = new GroupLuggage();
@@ -21,9 +24,9 @@ public class Runner {
         List<Luggage> middle = groupLuggage.getCategories()[1];
         List<Luggage> heavy = groupLuggage.getCategories()[2];
 
-        Runner.result("легкие", light);
-        Runner.result("средние", middle);
-        Runner.result("тяжелые", heavy);
+        Runner.result(lightType, light);
+        Runner.result(middleType, middle);
+        Runner.result(heavyType, heavy);
 
         scanner.close();
     }
