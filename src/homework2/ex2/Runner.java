@@ -21,15 +21,15 @@ public class Runner {
         List<Luggage> middle = groupLuggage.getCategories()[1];
         List<Luggage> heavy = groupLuggage.getCategories()[2];
 
-        System.out.println(Runner.result("легкие", light));
-        System.out.println(Runner.result("средние", middle));
-        System.out.println(Runner.result("тяжелые", heavy));
+        Runner.result("легкие", light);
+        Runner.result("средние", middle);
+        Runner.result("тяжелые", heavy);
 
         scanner.close();
     }
 
     public static String result(String type, List<Luggage> group) {
-        int sum =0;
+        int sum = 0;
         for (Luggage luggage : group) {
             sum += luggage.getWeight();
         }
