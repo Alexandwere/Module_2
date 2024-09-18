@@ -18,7 +18,7 @@ public class Feedback {
 
     @Override
     public String toString() {
-        return "\nОтзыв №1: " + id + ", " + text + ", " + countLikes + ", " + dateTime;
+        return "\nОтзыв №" + id+ ": " + id + ", " + text + ", " + countLikes + ", " + dateTime;
     }
 
     public LocalDateTime getDateTime() {
