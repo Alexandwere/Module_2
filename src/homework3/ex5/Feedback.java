@@ -16,20 +16,24 @@ public class Feedback {
         this.dateTime = dateTime;
     }
 
+    @Override
+    public String toString() {
+        return "\nОтзыв №1: " + id + ", " + text + ", " + countLikes + ", " + dateTime;
+    }
+
     public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Feedback feedback = (Feedback) o;
-        return id == feedback.id && countLikes == feedback.countLikes && Objects.equals(text, feedback.text) && Objects.equals(dateTime, feedback.dateTime);
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public int hashCode() {
-        return id;
+    public String getText() {
+        return text;
+    }
+
+    public int getCountLikes() {
+        return countLikes;
     }
 }

@@ -1,7 +1,10 @@
 package homework3.ex5;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
@@ -11,27 +14,57 @@ public class Runner {
         String text4 = "Плохой товар";
         String text5 = "Отличный товар";
 
-        Feedback firstFeedback1 = new Feedback(1, text1, 150,
+        Feedback feedback1 = new Feedback(1, text1, 200,
                 LocalDateTime.of(2024, 9, 23, 14, 30));
-        Feedback firstFeedback2 = new Feedback(2, text2, 170,
+        Feedback feedback2 = new Feedback(2, text2, 70,
+                LocalDateTime.of(2024, 9, 23, 14, 30));
+        Feedback feedback3 = new Feedback(3, text3, 100,
+                LocalDateTime.of(2024, 9, 23, 14, 30));
+        Feedback feedback4 = new Feedback(4, text4, 100,
+                LocalDateTime.of(2024, 9, 23, 14, 30));
+        Feedback feedback5 = new Feedback(5, text5, 100,
                 LocalDateTime.now());
-        Feedback firstFeedback3 = new Feedback(3, text3, 100,
-                LocalDateTime.now());
-        Feedback firstFeedback4 = new Feedback(4, text4, 90,
-                LocalDateTime.now());
-        Feedback firstFeedback5 = new Feedback(5, text5, 100,
-                LocalDateTime.of(2022, 1, 1, 11, 11));
 
-        HashMap<Integer, Feedback> feedbackHashMap = new HashMap<>();
-        feedbackHashMap.put(firstFeedback1.hashCode(), firstFeedback1);
-        feedbackHashMap.put(firstFeedback2.hashCode(), firstFeedback2);
-        feedbackHashMap.put(firstFeedback3.hashCode(), firstFeedback3);
-        feedbackHashMap.put(firstFeedback4.hashCode(), firstFeedback4);
-        feedbackHashMap.put(firstFeedback5.hashCode(), firstFeedback5);
+        List<Feedback> feedbackLinkedList = new LinkedList<>();
+        feedbackLinkedList.add(feedback1);
+        feedbackLinkedList.add(feedback2);
+        feedbackLinkedList.add(feedback3);
+        feedbackLinkedList.add(feedback4);
+        feedbackLinkedList.add(feedback5);
 
-        MyComparator myComparator = () -> {
+        Comparator<Feedback> comparator = (one, two) -> {
+            if (one.getCountLikes() > two.getCountLikes()) {
+                return -1;
+            }
+            if (one.getCountLikes() < two.getCountLikes()) {
+                return 1;
+            }
+            if (one.getCountLikes() == two.getCountLikes()) {
+                if (one.getDateTime().isAfter(two.getDateTime())) {
+                    return -1;
+                }
+                if (one.getDateTime().isBefore(two.getDateTime())) {
+                    return 1;
+                }
+                if (one.getDateTime().isEqual(two.getDateTime())) {
+                    if (one.getId() > two.getId()) {
+                        return -1;
+                    }
+                    if (one.getId() < two.getId()) {
+                        return 1;
+                    }
+                    if (one.getId() == two.getId()) {
+                        return 0;
+                    }
+                }
+            }
+            return 0;
+        };
 
-        }
+        feedbackLinkedList.sort(comparator);
+        System.out.println((feedbackLinkedList));
+
+
 
 
         //Задание №5: сортировка отзывов
