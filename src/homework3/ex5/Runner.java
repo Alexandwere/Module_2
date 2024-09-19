@@ -1,10 +1,7 @@
 package homework3.ex5;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Runner {
     public static void main(String[] args) {
@@ -25,10 +22,7 @@ public class Runner {
         Feedback feedback5 = new Feedback(5, text5, 100,
                 LocalDateTime.now());
 
-        List<Feedback> feedbackLinkedList = new ArrayList<>(List.of(feedback1, feedback2, feedback3, feedback4,
-                feedback5));
-
-        Comparator<Feedback> myComparator = (one, two) -> {
+        Comparator<Feedback> mycompare = (one, two) -> {
             if (one.getCountLikes() > two.getCountLikes()) {
                 return -1;
             }
@@ -57,7 +51,13 @@ public class Runner {
             return 0;
         };
 
-        feedbackLinkedList.sort(myComparator);
-        System.out.println(feedbackLinkedList.toString().replaceAll("^\\[|]$", ""));
+        TreeSet<Feedback> feedbacks = new TreeSet<>(mycompare);
+        feedbacks.add(feedback1);
+        feedbacks.add(feedback2);
+        feedbacks.add(feedback3);
+        feedbacks.add(feedback4);
+        feedbacks.add(feedback5);
+
+        System.out.println(feedbacks.toString().replaceAll("^\\[|]$", ""));
     }
 }

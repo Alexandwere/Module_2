@@ -1,7 +1,6 @@
 package homework3.ex5;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 public class Feedback {
     private int id;
@@ -18,7 +17,7 @@ public class Feedback {
 
     @Override
     public String toString() {
-        return "\nОтзыв №" + id+ ": " + id + ", " + text + ", " + countLikes + ", " + dateTime;
+        return "\nОтзыв №" + id + ": " + id + ", " + text + ", " + countLikes + ", " + dateTime;
     }
 
     public LocalDateTime getDateTime() {
