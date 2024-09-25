@@ -23,6 +23,7 @@ public class Runner {
         Stream<Car> carsStream1 = carList1.stream();
         Stream<Car> carsStream2 = carList2.stream();
         Stream<Car> allCarsStream = Stream.concat(carsStream1, carsStream2);
-        allCarsStream.filter(e -> e.getCarNumber().contains("04")).forEach(System.out::println);
+        allCarsStream.filter(e -> e.getPartNum() >= 40 && e.getPartNum() < 50).forEach(System.out::println);
+//        allCarsStream.filter(e -> e.getCarNumber().contains("04")).forEach(System.out::println);
     }
 }
