@@ -10,7 +10,7 @@ import static homework4.ex1.Region.*;
 public class Runner {
     private static final int LOW = 40;
     private static final int TOP = 50;
-
+1
     public static void main(String[] args) {
         List<Car> carList1 = new ArrayList<>();
         List<Car> carList2 = new ArrayList<>();
