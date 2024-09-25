@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
-import static homework4.ex1.Area.*;
+import static homework4.ex1.Region.*;
 
 public class Runner {
     private static final int LOW = 40;
@@ -21,8 +21,8 @@ public class Runner {
                 .toList();
 
         count.forEach(e -> {
-            carList1.add(new Car(e, MOSCOW.getArea()));
-            carList2.add(new Car(e, SPB.getArea()));
+            carList1.add(new Car(e, MOSCOW.getRegion()));
+            carList2.add(new Car(e, SPB.getRegion()));
         });
 
         Stream<Car> carsStream1 = carList1.stream();
