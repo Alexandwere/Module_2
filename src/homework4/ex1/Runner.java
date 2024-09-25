@@ -16,18 +16,15 @@ public class Runner {
         List<Car> carList2 = new ArrayList<>();
 
         AtomicInteger number = new AtomicInteger(0);
-        List<Integer> count = Stream.generate(() -> number.addAndGet(1))
+        Stream.generate(() -> number.addAndGet(1))
                 .limit(50)
-                .toList();
+                .forEach(e -> {
+                    carList1.add(new Car(e, MOSCOW.getRegion()));
+                    carList2.add(new Car(e, SPB.getRegion()));
+                });
 
-        count.forEach(e -> {
-            carList1.add(new Car(e, MOSCOW.getRegion()));
-            carList2.add(new Car(e, SPB.getRegion()));
-        });
-
-        Stream<Car> carsStream1 = carList1.stream();
-        Stream<Car> carsStream2 = carList2.stream();
-        Stream<Car> allCarsStream = Stream.concat(carsStream1, carsStream2);
-        allCarsStream.filter(e -> e.getPartNum() >= LOW && e.getPartNum() < TOP).forEach(System.out::println);
+        Stream.concat(carList1.stream(), carList2.stream())
+                .filter(e -> e.getPartNum() >= LOW && e.getPartNum() < TOP)
+                .forEach(System.out::println);
     }
 }
