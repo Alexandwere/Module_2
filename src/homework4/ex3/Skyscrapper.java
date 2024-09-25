@@ -1,6 +1,6 @@
 package homework4.ex3;
 
-public class Skyscrapper{
+public class Skyscrapper {
     private String name;
     private int height;
 

@@ -5,7 +5,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 
+import static homework4.ex1.Area.*;
+
 public class Runner {
+    private static final int LOW = 40;
+    private static final int TOP = 50;
+
     public static void main(String[] args) {
         List<Car> carList1 = new ArrayList<>();
         List<Car> carList2 = new ArrayList<>();
@@ -16,14 +21,13 @@ public class Runner {
                 .toList();
 
         count.forEach(e -> {
-            carList1.add(new Car(e, 799));
-            carList2.add(new Car(e, 178));
+            carList1.add(new Car(e, MOSCOW.getArea()));
+            carList2.add(new Car(e, SPB.getArea()));
         });
 
         Stream<Car> carsStream1 = carList1.stream();
         Stream<Car> carsStream2 = carList2.stream();
         Stream<Car> allCarsStream = Stream.concat(carsStream1, carsStream2);
-        allCarsStream.filter(e -> e.getPartNum() >= 40 && e.getPartNum() < 50).forEach(System.out::println);
-//        allCarsStream.filter(e -> e.getCarNumber().contains("04")).forEach(System.out::println);
+        allCarsStream.filter(e -> e.getPartNum() >= LOW && e.getPartNum() < TOP).forEach(System.out::println);
     }
 }
