@@ -26,7 +26,9 @@ public class Runner {
 
         System.out.println(uniqueTowers.stream().max(Skyscrapper::compareTo));
 
-        List<Skyscrapper> skyscrapperList = uniqueTowers.stream().filter(e -> e.getHeight() > BOUND).toList();
+        List<Skyscrapper> skyscrapperList = uniqueTowers.stream()
+                .filter(e -> e.getHeight() > BOUND)
+                .toList();
         Optional<Skyscrapper> first = skyscrapperList.stream().findFirst();
         first.ifPresentOrElse(System.out::println,
                 () -> System.out.println("Небоскреба выше километра - нет"));
