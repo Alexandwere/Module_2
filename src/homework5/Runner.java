@@ -1,25 +1,23 @@
 package homework5;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
 public class Runner {
 
-    //Итог:
-    //Вор - 1500 денег
-    //Банк - 0 денег
     public final static BigDecimal MONEY_IN_BANK = BigDecimal.valueOf(1500);
 
-    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException,
+            InstantiationException, IllegalAccessException, NoSuchFieldException {
         Bank bank = createBank(MONEY_IN_BANK);
         Thief thief = createThief();
-        System.out.println(bank);
-        System.out.println(thief);
 
-        thief.stealMoney(bank);
-        System.out.printf("Вор - %s денег\n", thief);
-        System.out.printf("Банк - %s денег\n", bank);
+        stealMoney(thief, bank);
+        System.out.printf("Вор - %s денег\n", getThiefMoney(thief));
+        System.out.printf("Банк - %s денег\n", getBankMoney(bank));
 
     }
 
@@ -36,9 +34,31 @@ public class Runner {
         Class<Thief> thiefClass = Thief.class;
         Constructor<Thief> thiefConstructor = thiefClass.getDeclaredConstructor();
         thiefConstructor.setAccessible(true);
-        Thief thief = thiefConstructor.newInstance();
-        return thief;
+        return thiefConstructor.newInstance();
     }
+
+    private static void stealMoney(Thief thief, Bank bank) throws NoSuchMethodException, InvocationTargetException,
+            IllegalAccessException {
+        Class<Thief> thiefClass = Thief.class;
+        Method stealMoney = thiefClass.getDeclaredMethod("stealMoney", Bank.class);
+        stealMoney.setAccessible(true);
+        stealMoney.invoke(thief, bank);
+    }
+
+    public static Object getBankMoney(Bank bank) throws NoSuchFieldException, IllegalAccessException {
+        Class<Bank> bankClass = Bank.class;
+        Field moneyField = bankClass.getDeclaredField("money");
+        moneyField.setAccessible(true);
+        return (BigDecimal) moneyField.get(bank);
+    }
+
+    public static Object getThiefMoney(Thief thief) throws NoSuchFieldException, IllegalAccessException {
+        Class<Thief> thiefClass = Thief.class;
+        Field moneyField = thiefClass.getDeclaredField("money");
+        moneyField.setAccessible(true);
+        return (BigDecimal) moneyField.get(thief);
+    }
+
 
 
 }
