@@ -45,14 +45,14 @@ public class Runner {
         stealMoney.invoke(thief, bank);
     }
 
-    public static Object getBankMoney(Bank bank) throws NoSuchFieldException, IllegalAccessException {
+    public static BigDecimal getBankMoney(Bank bank) throws NoSuchFieldException, IllegalAccessException {
         Class<Bank> bankClass = Bank.class;
         Field moneyField = bankClass.getDeclaredField("money");
         moneyField.setAccessible(true);
         return (BigDecimal) moneyField.get(bank);
     }
 
-    public static Object getThiefMoney(Thief thief) throws NoSuchFieldException, IllegalAccessException {
+    public static BigDecimal getThiefMoney(Thief thief) throws NoSuchFieldException, IllegalAccessException {
         Class<Thief> thiefClass = Thief.class;
         Field moneyField = thiefClass.getDeclaredField("money");
         moneyField.setAccessible(true);
